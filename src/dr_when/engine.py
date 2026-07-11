@@ -28,12 +28,12 @@ BUILTIN_NAMES = [
 
 
 def _load_builtin(modname: str):
-    return importlib.import_module(f"drwhen.plugins.{modname}")
+    return importlib.import_module(f"dr_when.plugins.{modname}")
 
 
 def _load_external(path: Path):
     spec = importlib.util.spec_from_file_location(
-        f"drwhen_ext_{path.stem}", str(path)
+        f"dr_when_ext_{path.stem}", str(path)
     )
     if spec is None or spec.loader is None:
         return None

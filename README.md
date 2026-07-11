@@ -1,4 +1,7 @@
-# drwhen — perioperception for Claude Code
+# Dr. When — perioperception for Claude Code
+
+Project name `dr-when`; Python package `dr_when`; command-line tool
+`drwhen`.
 
 **Posted 2026-07-11.** A pluggable status-line renderer that gives an agent
 *senses* about its own substrate — context %, wall-clock, model, effort,
@@ -22,7 +25,7 @@ choice for it.
 
 Nobody else seems to be building this. Everybody's building better tools
 for the agent to use; nobody's giving the agent a sense of the meat it's
-running on. `drwhen` is the flag we're planting on that patch of ground.
+running on. Dr. When is the flag we're planting on that patch of ground.
 
 The mechanism is not clever — Claude Code already supports a status-line
 command; we just make it plug-in-friendly and ship the plugins you want.

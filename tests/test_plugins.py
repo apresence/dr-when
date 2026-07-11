@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from drwhen.plugins import (
+from dr_when.plugins import (
     time_plugin, context, model, cost, effort, session,
     wakeup, budget_oauth, budget_api,
 )

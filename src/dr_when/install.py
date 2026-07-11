@@ -52,13 +52,13 @@ def _backup(path: Path) -> Path | None:
 
 
 def _resolve_drwhen_command() -> str:
-    # Prefer the installed entry point if on PATH, else python -m drwhen.cli
+    # Prefer the installed entry point if on PATH, else python -m dr_when.cli
     found = shutil.which("drwhen")
     if found:
         return f"{found} render"
     # Fall back to python -m form (works from source checkout)
     py = sys.executable or "python3"
-    return f"{py} -m drwhen.cli render"
+    return f"{py} -m dr_when.cli render"
 
 
 def plan_install(path: Path, command: str | None = None) -> dict:

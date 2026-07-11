@@ -5,8 +5,8 @@ from pathlib import Path
 
 import pytest
 
-from drwhen.engine import discover_plugins, render_line
-from drwhen.config import DEFAULT_CONFIG
+from dr_when.engine import discover_plugins, render_line
+from dr_when.config import DEFAULT_CONFIG
 
 
 SAMPLE_CTX = {

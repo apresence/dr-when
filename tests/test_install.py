@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from drwhen import install as install_mod
+from dr_when import install as install_mod
 
 
 def _read(p: Path) -> dict:
