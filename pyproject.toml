@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "drwhen"
+version = "0.1.0"
+description = "Pluggable Claude Code status-line renderer (Dr. When)."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name = "GigaRo Crew"}]
+license = {text = "MIT"}
+dependencies = []
+
+[project.optional-dependencies]
+budget = ["requests>=2.28"]
+test = ["pytest>=7"]
+
+[project.scripts]
+drwhen = "drwhen.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"drwhen" = ["py.typed"]
