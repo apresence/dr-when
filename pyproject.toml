@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "dr-when"
 version = "0.1.0"
-description = "Pluggable Claude Code status-line renderer (Dr. When)."
+description = "Pluggable status-line renderer for agents (Dr. When)."
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [{name = "GigaRo Crew"}]

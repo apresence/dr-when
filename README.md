@@ -1,4 +1,4 @@
-# Dr. When — perioperception for Claude Code
+# Dr. When — perioperception for agents
 
 Project name `dr-when`; Python package `dr_when`; command-line tool
 `drwhen`.
