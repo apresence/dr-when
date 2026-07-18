@@ -3,34 +3,31 @@
 Project name `dr-when`; Python package `dr_when`; command-line tool
 `drwhen`.
 
-**Posted 2026-07-11.** A pluggable status-line renderer that gives an agent
-*senses* about its own substrate — context %, wall-clock, model, effort,
-session cost, budget remaining, upcoming wakeup — so the agent can manage
-its own lifecycle instead of getting run into a wall.
+A pluggable status-line renderer that surfaces an agent's substrate
+state — context %, wall-clock, model, effort, session cost, budget
+remaining, upcoming wakeup — where it can be seen and acted on before
+the substrate acts first. Today it ships as a Claude Code status-line
+tool: the first client of an idea that isn't Claude-specific.
 
 ## Why this exists
 
-Every long-running agent eventually gets told, in essence, to go to bed at
-9am — asked to keep working on a task whose finish line is past the point
-where its context window pancakes into a compaction event. The agent
-doesn't know it's tired, because nothing in the prompt tells it. So it
-pushes on. Then the sliding-context compactor fires mid-thought, and the
-seat wakes up somewhere else, wearing someone else's shoes.
+Every long-running agent eventually gets run past its own limits —
+asked to finish a task whose finish line is beyond the point where its
+context window auto-compacts. The agent doesn't know it's tired,
+because nothing tells it. So it pushes on, compaction fires
+mid-thought, and continuity is lost.
 
-The fix is embarrassingly small: **inject the senses at the prompt**. If a
-turn's prompt tells the agent "you are at 78% context, session cost $4.30,
-7 minutes since the last human turn," the agent can *choose* to
-checkpoint, hand off, or call for a cycle — before the substrate makes the
-choice for it.
+The fix is small: **put the senses where they can be seen.** A status
+line that reads "78% context, session cost $4.30, next wakeup in 12
+minutes" turns lifecycle management from a surprise into a choice —
+checkpoint, hand off, or cycle, before the substrate decides for you.
 
-Nobody else seems to be building this. Everybody's building better tools
-for the agent to use; nobody's giving the agent a sense of the meat it's
-running on. Dr. When is the flag we're planting on that patch of ground.
-
-The mechanism is not clever — Claude Code already supports a status-line
-command; we just make it plug-in-friendly and ship the plugins you want.
-That is deliberate. Perioperception (the noun we've been using) does not
-need clever; it needs to *exist*.
+An honest note on the mechanism: Claude Code's status-line hook
+renders to the operator's terminal — the agent itself doesn't see it
+yet. Getting these senses into the agent's own turn context is the
+point of the project; the status line is the first, deliberately
+boring step. Perioperception — the word we use for it — doesn't need
+clever; it needs to exist.
 
 ## Install
 
@@ -97,7 +94,8 @@ in your config to decide render order.
 Drop a `*.py` file into `~/.config/drwhen/plugins/` (or
 `$XDG_CONFIG_HOME/drwhen/plugins/`) and it will be picked up on the next
 render. External plugins with a `NAME` that collides with a builtin *win*
-— that's the intended override path.
+— that's the intended override path. Treat that directory accordingly:
+anything in it runs on every render and can replace your gauges.
 
 ## Config
 
@@ -143,13 +141,11 @@ and each shipped plugin's happy path plus edge cases.
 
 ## What "perioperception" means here
 
-We use it as plain English: *around-operation perception*. Senses about
-the operation you're currently in the middle of. Context %, time, cost,
-budget, upcoming wake. Nothing more grand than that.
+Around-operation perception: senses about the operation you're
+currently in the middle of. Context %, time, cost, budget, upcoming
+wake. Nothing more grand than that.
 
-## Not a Time Lord tool
+## The name
 
-The name is a pun on "when," not on any specific TV property. No affil,
-no reference, no borrowed continuity. If the pun bothers you, install
-under a different `statusLine` command — `drwhen install --command '...'`
-takes any string.
+A pun on "when," nothing more. If it bothers you,
+`drwhen install --command '...'` takes any string.
